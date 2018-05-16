@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원 정보 처리 SQL -->
+<mapper namespace="DAO.ChickenMapper">
+
+<insert id="insertChicken" parameterType="Chicken">
+insert into chicken(
+chicken_seq,
+chicken_kind,
+chicken_grade,
+chicken_age,
+indate
+) values
+(
+chicken_seq.nextval,
+#{chicken_kind},
+#{chicken_grade},
+#{chicken_age},
+sysdate
+)
+</insert>
+
+<insert id="insertEgg" parameterType="Egg">
+insert into Egg(
+egg_seq,
+egg_price,
+egg_grade,
+chicken_seq
+) values
+(
+egg_seq.nextval,
+#{egg_price},
+#{egg_grade},
+'0'
+)
+</insert>
+
+<select id="chickenList" resultType="Chicken">
+select
+  	chicken_seq,
+	chicken_kind,
+	chicken_grade,
+	chicken_age,
+	indate
+from 
+	chicken
+</select>
+
+<select id="eggList" resultType="Egg">
+select
+  	egg_seq,
+	egg_price,
+	egg_grade
+from 
+	egg
+</select>
+
+
+<delete id="deleteChicken" parameterType="String">
+delete chicken
+where 
+chicken_seq=#{chicken_seq}
+</delete>
+
+</mapper>
