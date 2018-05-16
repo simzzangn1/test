@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원 정보 처리 SQL -->
+<mapper namespace="DAO.UNITSMapper">
+	<insert id="insertUNITS" parameterType="UNITS">
+		insert into units
+		(units_seq,
+		units_name,
+		unit_username,
+		unit_password
+		)
+		values
+		(units_seq.nextval,
+		#{units_name},
+		#{unit_username},
+		#{unit_password}
+		)
+
+
+	</insert>
+
+	<select id="ar" resultType="UNITS">
+		select
+		units_seq,
+		units_name,
+		unit_username,
+		unit_password
+		from
+		units
+	</select>
+
+</mapper>

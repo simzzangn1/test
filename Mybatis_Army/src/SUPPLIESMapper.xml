@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원 정보 처리 SQL -->
+<mapper namespace="DAO.SUPPLIESMapper">
+
+		<insert id="insertSUPPLIES" parameterType="SUPPLIES">
+		insert into supplies
+		(
+		supplies_seq,
+		supply_class,
+		supplies_name,
+		supplies_quantity,
+		units_seq
+		)
+		values
+		(
+		supplies_seq.nextval,
+		#{supply_class},
+		#{supplies_name},
+		#{supplies_quantity},
+		#{units_seq}
+		)
+
+
+	</insert>
+	<select id="sList" resultType="SUPPLIES">
+		select
+		supplies_seq,
+		supply_class,
+		supplies_name,
+		supplies_quantity,
+		units_seq
+
+		from
+		supplies
+	</select>
+</mapper>
